@@ -2,7 +2,7 @@
 
 This is just a simple e-commerce project in my college
 
-It has 2 roles which is the Buyer and Farmer
+It has 2 roles: Buyer and Farmer
 
 ## Buyer 
 
