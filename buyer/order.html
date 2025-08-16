@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+ 
+<!-- Navbar -->
+<header class="bg-white shadow-md py-4 px-6 sm:px-10">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <span class="text-green-500 font-bold text-2xl sm:text-3xl">FarmLink</span>
+     
+  
+      <!-- Right Side Buttons -->
+      <div class="flex items-center space-x-4">
+        <!-- Cart Icon -->
+         <a href="checkout.html">
+                <svg
+                class="h-6 w-6 text-gray-600 cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+                </svg>
+            </a>
+            <div class="relative">
+              <button class="flex items-center text-gray-700 hover:text-green-500 font-semibold focus:outline-none">
+                  <svg class="h-6 w-6 text-gray-600 cursor-pointer" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                  </svg>
+                  <span id="username">Loading...</span>
+              </button>
+          </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- end of Navbar -->
+    <div class="max-w-screen-md mx-auto p-6">
+      
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+
+
+                       
+                       
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 flex-shrink-0">
+                                        <!-- product image -->
+                                        <img id="order-image" class="h-10 w-10 rounded" src="" alt="Ordered Product">
+                                    </div>
+                                    <div class="ml-4">
+                                        <!-- PRODUCT NAME -->
+                                        <div id="order-title" class="text-sm font-medium text-gray-900"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <!-- PRICE -->
+                                <div id="order-price" class="text-sm text-gray-900"></div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <!-- QUANTITY -->
+                                    <input type="number" id="order-quantity" value="" class="w-16 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-700 text-sm">
+                                
+                                </div>                    
+                            </td>
+                            <!-- SUBTOTAL -->
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div id="order-total" class="text-sm text-gray-900"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 flex justify-between">
+                <button  onclick="window.location.href='farmlink.html'" class="bg-white border border-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-100 focus:outline-none">
+                    Return To Shop
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mt-8 w-full sm:w-auto self-end">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Payment Details</h2>
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-700">Subtotal:</span>
+                <span class="font-semibold text-gray-800" id="order-sub-total"></span>
+            </div>
+            <div class="flex justify-between mb-4">
+                <span class="text-gray-700">Shipping:</span>
+                <!-- SHIPPING FEE HEHEHE -->
+                <span class="font-semibold text-gray-800">₱50</span>
+            </div>
+            <div class="border-t border-gray-200 py-2 flex justify-between mb-4">
+                <span class="text-gray-700 font-semibold">Total:</span>
+                <!-- DITO YUNG TOTAL -->
+                <span class="font-bold text-gray-900" id="final-total"></span>
+            </div>
+            <button id="save-order" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-md w-full focus:outline-none">
+                Process to checkout
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        const orderData = JSON.parse(localStorage.getItem('orderDetails'));
+
+        console.log(orderData);
+    
+        function calculateTotals() {
+            const quantityInput = document.getElementById("order-quantity");
+            let quantity = parseInt(quantityInput.value);
+    
+            const price = parseFloat(orderData.price) || 0;
+            const shippingFee = 50;
+    
+            if (isNaN(quantity) || quantity <= 0) {
+                quantity = 0;
+                document.getElementById("order-total").textContent = `₱0.00`;
+                document.getElementById("order-sub-total").textContent = `₱0.00`;
+                document.getElementById("final-total").textContent = `₱0.00`;
+                return;
+            }
+    
+            const subtotal = price * quantity;
+            const total = subtotal + shippingFee;
+    
+            document.getElementById("order-price").textContent = `₱${price.toFixed(2)}`;
+            document.getElementById("order-total").textContent = `₱${subtotal.toFixed(2)}`;
+            document.getElementById("order-sub-total").textContent = `₱${subtotal.toFixed(2)}`;
+            document.getElementById("final-total").textContent = `₱${total.toFixed(2)}`;
+        }
+    
+        if (orderData) {
+            document.getElementById("order-title").textContent = orderData.title;
+            document.getElementById("order-image").src = orderData.image;
+            document.getElementById("order-quantity").value = orderData.quantity;
+
+            calculateTotals();
+
+            document.getElementById("order-quantity").addEventListener("input", calculateTotals);
+        } else {
+            alert("No order data found.");
+        }
+
+    document.getElementById("save-order").addEventListener("click", function () {
+        console.log("save data");
+        const orderDetails = JSON.parse(localStorage.getItem("orderDetails"));
+        const currentQuantity = parseInt(document.getElementById("order-quantity").value);
+        const userId = localStorage.getItem('user_id'); 
+
+        if (!userId) {
+            alert("User not logged in or user ID not found.");
+            return;
+        }
+
+        const dataToSend = {
+            id: orderDetails.id,
+            user_id: parseInt(userId),
+            price: parseFloat(orderDetails.price),
+            quantity: currentQuantity,
+        };
+
+        console.log("Data being sent:", dataToSend);
+
+        fetch("../backend/checkout.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataToSend),
+        })
+        .then((response) => {
+            if (!response.ok) {
+                return response.json().then(errData => {
+                    console.error("Fetch error:", errData);
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                });
+            }
+            return response.json();
+        })
+        .then((data) => {
+            alert(data.message);
+            if (data.status === "success") {
+                window.location.href = "process.html";
+            }
+        })
+        .catch((error) => {
+            console.error("Checkout error:", error);
+            alert("Something went wrong during checkout.");
+        });
+    });
+    </script>
+
+
+<script>
+    window.onload = function() {
+        fetch('../backend/get_user.php')
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === "success") {
+                    document.getElementById("username").innerText =
+                        `${data.username || data.email}`;
+                } else {
+                    document.getElementById("username").innerText =
+                        "Guest";
+                }
+            });
+    };
+  </script>
+
+</body>
+</html>

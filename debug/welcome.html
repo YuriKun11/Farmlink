@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome User</title>
+</head>
+<body>
+    
+    <h2 id="welcomeText">Welcome!</h2>
+
+    <script>
+        window.onload = function() {
+            fetch('get_user.php')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        document.getElementById("welcomeText").innerText = 
+                            `Welcome, ${data.username || data.email}!`;
+                    } else {
+                        document.getElementById("welcomeText").innerText = 
+                            "You are not logged in.";
+                    }
+                });
+        };
+    </script>
+    
+
+
+</body>
+</html>

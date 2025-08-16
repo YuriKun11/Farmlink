@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body>
+    <h2>Student Records</h2>
+    <table border="1" id="studentsTable">
+        <thead>
+            <tr>
+                <th>ID Number</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        window.onload = function () {
+            fetch('http://127.0.0.1/API_Demo/saveStudent/getStudents.php')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        const tbody = document.querySelector("#studentsTable tbody");
+                        data.data.forEach(student => {
+                            const row = document.createElement("tr");
+                            row.innerHTML = `
+                                <td>${student.id_number}</td>
+                                <td>${student.last_name}</td>
+                                <td>${student.first_name}</td>
+                                <td>${student.middle_name}</td>
+                                <td>${student.contact_number}</td>
+                                <td>${student.email}</td>
+                            `;
+                            tbody.appendChild(row);
+                        });
+                    } else {
+                        alert("Error fetching data: " + data.message);
+                    }
+                });
+        };
+    </script>
+</body>
+</html>

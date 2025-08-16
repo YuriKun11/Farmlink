@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+  @keyframes bubble {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    25% {
+      transform: translateY(-2px) scale(1.02);
+    }
+    50% {
+      transform: translateY(0) scale(1);
+    }
+    75% {
+      transform: translateY(-2px) scale(1.02);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+  .animate-horizontal-scroll {
+    display: flex;
+    animation: bubble 8s ease-in-out infinite;
+  }
+</style>
+
+
+
+
+<body class="bg-gray-100 font-sans">
+
+
+<!-- Navbar -->
+<header class="bg-white shadow-md py-4 px-6 sm:px-10">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <span class="text-green-500 font-bold text-2xl sm:text-3xl"><a href="../index.html">FarmLink</a></span>
+      <!-- Search Bar -->
+      <div class="relative flex-grow mx-4 sm:mx-8">
+        <input
+          type="text"
+          placeholder="Search products"
+          class="w-full py-2 pl-10 pr-4 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 text-black"
+        />
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <i class="fas fa-search text-gray-400"></i>
+        </div>
+      </div>
+
+      <!-- Right Side Buttons -->
+      <div class="flex items-center space-x-4">
+        <!-- Cart Icon -->
+         <a href="checkout.html">
+                <svg
+                class="h-6 w-6 text-gray-600 cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+                </svg>
+            </a>
+            <div class="relative" id="user-dropdown-wrapper">
+              <button id="user-dropdown-btn" class="flex items-center text-gray-700 hover:text-green-500 font-semibold focus:outline-none">
+                <svg class="h-6 w-6 text-gray-600 cursor-pointer" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                <span id="username" class="ml-1">Loading...</span>
+              </button>
+            
+              <!-- Dropdown -->
+              <div id="user-dropdown" class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg hidden z-50">
+                <button id="login-btn" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hidden">Login</button>
+                <button id="logout-btn" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hidden">Logout</button>
+              </div>
+            </div>
+            
+      </div>
+    </div>
+  </header>
+
+  <!-- end of Navbar -->
+
+  
+  <main class="max-w-screen-xl mx-auto px-6 py-8">
+
+   <!-- Banner Section -->
+   <div class="relative overflow-hidden rounded-lg mb-6">
+    <div class="flex animate-horizontal-scroll">
+      <!-- Banner 1 -->
+   
+      <!-- Banner 2 -->
+      <div class="relative w-full sm:w-auto flex-shrink-0 mr-4 rounded-lg overflow-hidden">
+        <img src="../images/image.png" alt="Offer 2" class="w-full h-auto object-cover" style="max-height: 150px;" />
+        <div class="absolute top-2 left-2 bg-green-200 text-green-700 rounded-md px-2 py-1 text-sm">Holy Week Offers</div>
+        <div class="absolute bottom-2 left-2 text-white">
+          <h3 class="font-semibold text-lg">Get 25%</h3>
+          <button class="bg-green-500 hover:bg-green-600 text-white rounded-md px-3 py-1 text-sm mt-1">Grab Offer &gt;</button>
+        </div>
+      </div>
+
+      <!-- Banner 3 -->
+      <div class="relative w-full sm:w-auto flex-shrink-0 mr-4 rounded-lg overflow-hidden">
+        <img src="../images/image.png" alt="Offer 3" class="w-full h-auto object-cover" style="max-height: 150px;" />
+        <div class="absolute top-2 left-2 bg-teal-200 text-teal-700 rounded-md px-2 py-1 text-sm">Holy Week Offers</div>
+        <div class="absolute bottom-2 left-2 text-white">
+          <h3 class="font-semibold text-lg">Get 25%</h3>
+          <button class="bg-teal-500 hover:bg-teal-600 text-white rounded-md px-3 py-1 text-sm mt-1">Grab Offer &gt;</button>
+        </div>
+      </div>
+      <!-- Banner 4 -->
+      <div class="relative w-full sm:w-auto flex-shrink-0 mr-4 rounded-lg overflow-hidden">
+        <img src="../images/image.png" alt="Offer 3" class="w-full h-auto object-cover" style="max-height: 150px;" />
+        <div class="absolute top-2 left-2 bg-teal-200 text-teal-700 rounded-md px-2 py-1 text-sm">Holy Week Offers</div>
+        <div class="absolute bottom-2 left-2 text-white">
+          <h3 class="font-semibold text-lg">Get 25%</h3>
+          <button class="bg-teal-500 hover:bg-teal-600 text-white rounded-md px-3 py-1 text-sm mt-1">Grab Offer &gt;</button>
+        </div>
+      </div>
+      <!-- Banner 5 -->
+      <div class="relative w-full sm:w-auto flex-shrink-0 mr-4 rounded-lg overflow-hidden">
+        <img src="../images/image.png" alt="Offer 3" class="w-full h-auto object-cover" style="max-height: 150px;" />
+        <div class="absolute top-2 left-2 bg-teal-200 text-teal-700 rounded-md px-2 py-1 text-sm">Holy Week Offers</div>
+        <div class="absolute bottom-2 left-2 text-white">
+          <h3 class="font-semibold text-lg">Get 25%</h3>
+          <button class="bg-teal-500 hover:bg-teal-600 text-white rounded-md px-3 py-1 text-sm mt-1">Grab Offer &gt;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Promotion Banner -->
+  <div class="bg-green-100 rounded-lg py-6 px-8 mb-8 flex items-center">
+    <img src="../icons/fruits/avocado.png" alt="Avocado" class="w-48 h-auto mr-6 rounded-lg shadow-md" />
+    <div>
+      <h2 class="text-xl font-semibold text-green-700 mb-2">Healthy Body Comes with Good Nutrients</h2>
+      <p class="text-gray-600">Start your health journey now</p>
+    </div>
+  </div>
+
+    <!-- Category Section -->
+    <div class="mb-8">
+      <h2 class="text-lg font-semibold text-gray-800 mb-4">Category</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
+          <img src="..//icons/fruits/apple.png" alt="Fruits" class="w-16 h-16 object-contain mb-2" />
+          <span class="text-gray-700 font-semibold">Fruits</span>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
+          <img src="../icons/vegetables/broccoli.png" alt="Vegetables" class="w-16 h-16 object-contain mb-2" />
+          <span class="text-gray-700 font-semibold">Vegetables</span>
+        </div>
+      </div>
+    </div>
+    <!-- FETCH DATA SECTION -->
+<div class="mb-8">
+    <h2 class="text-lg font-semibold text-gray-800 mb-4">Top Products</h2>
+
+<!-- PRODUCT DISPLAY WRAPPER -->
+<div class="mb-8">
+    <div id="product-list" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4"></div>
+</div>
+
+    <!-- Back to top button -->
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      class="fixed bottom-4 right-4 bg-gray-300 text-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-400">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+
+  </main>
+
+
+    <!-- Delete Confirmation Modal -->
+<div id="delete-modal" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50 hidden">
+    <div class="bg-white p-6 rounded-md shadow-xl max-w-sm mx-auto">
+        <h3 class="text-sm font-semibold text-gray-800 mb-4">Are you sure you want to delete this product? This action cannot be undone.</h3>
+        <div class="flex justify-center space-x-4">
+            <button id="cancel-delete" class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                Cancel
+            </button>
+            <button id="confirm-delete" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="login-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+  <div class="bg-white p-6 rounded-lg w-96">
+      <h2 class="text-xl font-semibold mb-4">You need to log in first!</h2>
+      <p class="mb-4">Please sign up to view product details.</p>
+      <div class="flex justify-end space-x-2">
+          <button id="close-modal" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+          <a href="../signup.html" id="go-to-signup" class="bg-green-500 text-white px-4 py-2 rounded">Sign Up</a>
+      </div>
+  </div>
+</div>
+
+
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+    
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <script>
+        const productList = document.getElementById('product-list');
+
+        function fetchProducts() {
+            fetch('http://127.0.0.1/API_Demo/backend/get_products.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        displayProducts(data.products);
+                    } else {
+                        productList.innerHTML = `<p class="text-red-500">${data.message}</p>`;
+                    }
+                })
+                .catch(error => {
+                    productList.innerHTML = `<p class="text-red-500">Error fetching products: ${error}</p>`;
+                });
+        }
+
+        function displayProducts(products) {
+  const productList = document.getElementById('product-list');
+  productList.innerHTML = '';
+
+  if (products.length === 0) {
+    productList.innerHTML = `
+      <div class="col-span-full text-center text-gray-500 py-4">You have no products.</div>
+    `;
+  } else {
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.id = `product-card-${product.id}`; 
+      card.className = 'bg-white rounded-lg shadow-md p-4 flex flex-col items-center cursor-pointer';
+
+      const imageHtml = product.image
+        ? `<img src="http://127.0.0.1/API_Demo/backend/${product.image}" alt="${product.title}" class="w-24 h-24 object-contain mb-2 select-none draggable="false" />`
+        : `<div class="w-24 h-24 bg-gray-200 flex items-center justify-center text-gray-500 mb-2">No Image</div>`;
+
+      card.innerHTML = `
+        ${imageHtml}
+        <h3 class="text-gray-700 font-semibold text-center">${product.title}</h3>
+        <p class="text-gray-600 text-sm text-center">₱${product.price}/${product.unit}</p>
+      `;
+
+      productList.appendChild(card);
+    });
+  }
+}
+
+window.onload = function() {
+    fetchProducts();
+
+    fetch('../backend/get_user.php')
+        .then(res => res.json())
+        .then(data => {
+            const modal = document.getElementById('login-modal');
+            const closeModalButton = document.getElementById('close-modal');
+            const loginBtn = document.getElementById('login-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            const usernameDisplay = document.getElementById("username");
+            const userDropdown = document.getElementById('user-dropdown');
+
+            if (data.status === "success") {
+                usernameDisplay.innerText = data.username || data.email;
+                loginBtn.classList.add("hidden");
+                logoutBtn.classList.remove("hidden");
+
+                productList.addEventListener('click', (event) => {
+                    const productCard = event.target.closest('[id^="product-card-"]');
+                    if (productCard) {
+                        const productId = productCard.id.split('-').pop();
+                        window.location.href = `product.html?id=${productId}`;
+                    }
+                });
+            } else {
+                usernameDisplay.innerText = "Guest";
+                loginBtn.classList.remove("hidden");
+                logoutBtn.classList.add("hidden");
+
+                productList.addEventListener('click', (event) => {
+                    const productCard = event.target.closest('[id^="product-card-"]');
+                    if (productCard) {
+                        modal.classList.remove('hidden');
+                    }
+                });
+
+                closeModalButton.addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                });
+            }
+        });
+};
+
+    </script>
+
+    <script>
+        let productIdToDelete = null;
+
+        function showDeleteModal(productId) {
+            productIdToDelete = productId; 
+            const modal = document.getElementById('delete-modal');
+            modal.classList.remove('hidden'); 
+        }
+
+        document.getElementById('cancel-delete').addEventListener('click', () => {
+            const modal = document.getElementById('delete-modal');
+            modal.classList.add('hidden');
+            productIdToDelete = null;
+        });
+
+        document.getElementById('confirm-delete').addEventListener('click', () => {
+            if (productIdToDelete) {
+            
+                fetch(`http://127.0.0.1/API_Demo/backend/delete_product.php?id=${productIdToDelete}`, {
+                    method: 'DELETE',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                    
+                        const modal = document.getElementById('delete-modal');
+                        modal.classList.add('hidden');
+                        productIdToDelete = null;
+                        fetchProducts(); 
+                    } else {
+                        alert('Error deleting product.');
+                    }
+                })
+                .catch(error => {
+                    alert('Error deleting product: ' + error);
+                });
+            }
+        });
+    </script>
+
+    <script>
+    
+    const userDropdownBtn = document.getElementById('user-dropdown-btn');
+    const userDropdown = document.getElementById('user-dropdown');
+
+    userDropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userDropdown.classList.toggle('hidden');
+    });
+
+    window.addEventListener('click', () => {
+      userDropdown.classList.add('hidden');
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      fetch('../backend/logout.php')
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'success') {
+            window.location.reload();
+          }
+        });
+    });
+
+    document.getElementById('login-btn').addEventListener('click', () => {
+  window.location.href = '../login.html';
+});
+
+    </script>
+    <script src="../js/Navigate.js"></script>
+
+</body>
+</html>

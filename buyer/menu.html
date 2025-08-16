@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@fortawesome/fontawesome-free/js/all.min.js" defer></script>
+  <style>
+    @keyframes horizontal-scroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-horizontal-scroll {
+      display: flex;
+      animation: horizontal-scroll 30s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans overflow-x-hidden">
+
+<!-- Navbar -->
+<header class="bg-white shadow-md py-4 px-6 sm:px-10">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <span class="text-green-500 font-bold text-2xl sm:text-3xl">FarmLink</span>
+
+      <!-- Search Bar -->
+      <div class="relative flex-grow mx-4 sm:mx-8">
+        <input
+          type="text"
+          placeholder="Search products"
+          class="w-full py-2 pl-10 pr-4 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 text-black"
+        />
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <i class="fas fa-search text-gray-400"></i>
+        </div>
+      </div>
+
+      <!-- Right Side Buttons -->
+      <div class="flex items-center space-x-4">
+        <!-- Cart Icon -->
+         <a href="checkout.html">
+                <svg
+                class="h-6 w-6 text-gray-600 cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+                </svg>
+            </a>
+        <!-- Buttons -->
+        <button class="text-green-500 hover:text-green-600 font-semibold" onclick="goToSignUp()">Sign up</button>
+        <span class="text-gray-400">|</span>
+        <button class="text-green-500 hover:text-green-600 font-semibold" onclick="goToLogin()">Login</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- end of Navbar -->
+
+  <main class="max-w-screen-xl mx-auto px-6 py-8">
+
+    <!-- Banner Section -->
+    <div class="relative overflow-hidden rounded-lg mb-6">
+      <div class="flex animate-horizontal-scroll">
+        <!-- Banner 1 -->
+        <div class="relative w-full sm:w-auto flex-shrink-0 mr-4 rounded-lg overflow-hidden">
+          <img src="images/image.png" alt="Offer 1" class="w-full h-auto object-cover" style="max-height: 150px;" />
+          <div class="absolute top-2 left-2 bg-red-200 text-red-700 rounded-md px-2 py-1 text-sm">Holy Week Offers</div>
+          <div class="absolute bottom-2 left-2 text-white">
+            <h3 class="font-semibold text-lg">Get 25%</h3>
+            <button class="bg-red-500 hover:bg-red-600 text-white rounded-md px-3 py-1 text-sm mt-1">Grab Offer &gt;</button>
+          </div>
+        </div>
+
+        <!-- Banner 2 -->
+        <div class="relative w-full sm:w-auto flex-shrink-0 mr-4 rounded-lg overflow-hidden">
+          <img src="../images/image.png" alt="Offer 2" class="w-full h-auto object-cover" style="max-height: 150px;" />
+          <div class="absolute top-2 left-2 bg-green-200 text-green-700 rounded-md px-2 py-1 text-sm">Holy Week Offers</div>
+          <div class="absolute bottom-2 left-2 text-white">
+            <h3 class="font-semibold text-lg">Get 25%</h3>
+            <button class="bg-green-500 hover:bg-green-600 text-white rounded-md px-3 py-1 text-sm mt-1">Grab Offer &gt;</button>
+          </div>
+        </div>
+
+        <!-- Banner 3 -->
+        <div class="relative w-full sm:w-auto flex-shrink-0 mr-4 rounded-lg overflow-hidden">
+          <img src="../images/image.png" alt="Offer 3" class="w-full h-auto object-cover" style="max-height: 150px;" />
+          <div class="absolute top-2 left-2 bg-teal-200 text-teal-700 rounded-md px-2 py-1 text-sm">Holy Week Offers</div>
+          <div class="absolute bottom-2 left-2 text-white">
+            <h3 class="font-semibold text-lg">Get 25%</h3>
+            <button class="bg-teal-500 hover:bg-teal-600 text-white rounded-md px-3 py-1 text-sm mt-1">Grab Offer &gt;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promotion Banner -->
+    <div class="bg-green-100 rounded-lg py-6 px-8 mb-8 flex items-center">
+      <img src="../icons/fruits/avocado.png" alt="Avocado" class="w-48 h-auto mr-6 rounded-lg shadow-md" />
+      <div>
+        <h2 class="text-xl font-semibold text-green-700 mb-2">Healthy Body Comes with Good Nutrients</h2>
+        <p class="text-gray-600">Start your health journey now</p>
+      </div>
+    </div>
+
+    <!-- Category Section -->
+    <div class="mb-8">
+      <h2 class="text-lg font-semibold text-gray-800 mb-4">Category</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
+          <img src="..//icons/fruits/apple.png" alt="Fruits" class="w-16 h-16 object-contain mb-2" />
+          <span class="text-gray-700 font-semibold">Fruits</span>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
+          <img src="../icons/vegetables/broccoli.png" alt="Vegetables" class="w-16 h-16 object-contain mb-2" />
+          <span class="text-gray-700 font-semibold">Vegetables</span>
+        </div>
+      </div>
+    </div>
+
+   <!-- Best Selling Section -->
+<div class="mb-8">
+    <h2 class="text-lg font-semibold text-gray-800 mb-4">Best Selling</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/fruits/apple.png" alt="Apple" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Apple</h3>
+        <p class="text-gray-600 text-sm text-center">₱150/kg</p>
+       
+        <button onclick="window.location.href='product.html'" class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">
+          +
+        </button>
+    
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/vegetables/garlic.png" alt="Garlic" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Garlic</h3>
+        <p class="text-gray-600 text-sm text-center">₱141/kg</p>
+        <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">
+          +
+        </button>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/vegetables/eggplant.png" alt="Eggplant" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Eggplant</h3>
+        <p class="text-gray-600 text-sm text-center">₱90-100/kg</p>
+        <button  onclick="window.location.href='product.html'" class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">
+          +
+        </button>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/fruits/grapes.png" alt="Grapes" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Grapes</h3>
+        <p class="text-gray-600 text-sm text-center">₱260/kg</p>
+        <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">
+          +
+        </button>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/fruits/mango.png" alt="Mango" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Mango</h3>
+        <p class="text-gray-600 text-sm text-center">₱100/kg</p>
+        <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">
+          +
+        </button>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/vegetables/carrot.png" alt="Organic Carrots" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Organic Carrots</h3>
+        <p class="text-gray-600 text-sm text-center">₱68/kg</p>
+        <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">
+          +
+        </button>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/vegetables/onion.png" alt="Onion" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Onion</h3>
+        <p class="text-gray-600 text-sm text-center">₱116/kg</p>
+        <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">
+          +
+        </button>
+      </div>
+  
+    </div>
+  </div>
+  
+
+    <!-- Vegetables Section -->
+    <div class="mb-8">
+      <h2 class="text-lg font-semibold text-gray-800 mb-4">Vegetables</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+          <img src="../icons/vegetables/bellpepper.png" alt="Bell Pepper Red" class="w-24 h-24 object-contain mb-2" />
+          <h3 class="text-gray-700 font-semibold text-center">Bell Pepper Red</h3>
+          <p class="text-gray-600 text-sm text-center">₱350/kg</p>
+          <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">+</button>
+        </div>
+        <!-- More vegetable cards here -->
+
+        <!-- More vegetable cards -->
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+            <img src="../icons/vegetables/broccoli.png" alt="Broccoli" class="w-24 h-24 object-contain mb-2" />
+            <h3 class="text-gray-700 font-semibold text-center">Broccoli</h3>
+            <p class="text-gray-600 text-sm text-center">₱120/kg</p>
+            <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">+</button>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+            <img src="../icons/vegetables/cabbage.png" alt="Cabbage" class="w-24 h-24 object-contain mb-2" />
+            <h3 class="text-gray-700 font-semibold text-center">Cabbage</h3>
+            <p class="text-gray-600 text-sm text-center">₱80/kg</p>
+            <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">+</button>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+            <img src="../icons/vegetables/carrot.png" alt="Carrot" class="w-24 h-24 object-contain mb-2" />
+            <h3 class="text-gray-700 font-semibold text-center">Carrot</h3>
+            <p class="text-gray-600 text-sm text-center">₱90/kg</p>
+            <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">+</button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Fruits Section -->
+<div class="mb-8">
+    <h2 class="text-lg font-semibold text-gray-800 mb-4">Fruits</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/fruits/apple.png" alt="Apple" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Apple</h3>
+        <p class="text-gray-600 text-sm text-center">₱150/kg</p>
+        <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">+</button>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/fruits/mango.png" alt="Mango" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Mango</h3>
+        <p class="text-gray-600 text-sm text-center">₱200/kg</p>
+        <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">+</button>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+        <img src="../icons/fruits/strawberry.png" alt="Strawberry" class="w-24 h-24 object-contain mb-2" />
+        <h3 class="text-gray-700 font-semibold text-center">Strawberry</h3>
+        <p class="text-gray-600 text-sm text-center">₱250/box</p>
+        <button class="bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mt-2">+</button>
+      </div>
+  
+    </div>
+  </div>
+
+
+    <!-- Back to top button -->
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      class="fixed bottom-4 right-4 bg-gray-300 text-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-400">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+
+  </main>
+
+</body>
+
+<script>
+    function goToSignUp() { 
+      window.location.href = '../signup.html'; 
+    }
+
+    function goToLogin() {
+      window.location.href = '../login.html';
+    }
+  </script>
+  
+
+</html>

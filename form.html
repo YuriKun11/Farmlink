@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Form</title>
+</head>
+<body>
+    <a href="lol.html">Click me</a>
+    <h2>Student Registration</h2>
+    <label>ID Number:</label><br>
+    <input type="text" id="idnumber"><br>
+
+    <label>Last Name:</label><br>
+    <input type="text" id="lastname"><br>
+
+    <label>First Name:</label><br>
+    <input type="text" id="firstname"><br>
+
+    <label>Middle Name:</label><br>
+    <input type="text" id="middlename"><br>
+
+    <label>Contact Number:</label><br>
+    <input type="text" id="contactnumber"><br>
+
+    <label>Email:</label><br>
+    <input type="email" id="email"><br><br>
+
+    <button id="save">Save</button>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("save").onclick = function () {
+                var idnumber = document.getElementById("idnumber").value;
+                var lastname = document.getElementById("lastname").value;
+                var firstname = document.getElementById("firstname").value;
+                var middlename = document.getElementById("middlename").value;
+                var contactnumber = document.getElementById("contactnumber").value;
+                var email = document.getElementById("email").value;
+
+                console.log({ idnumber, lastname, firstname, middlename, contactnumber, email });
+
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function () {
+                    if (xhttp.readyState === 4 && xhttp.status === 200) {
+                        var response = JSON.parse(this.responseText);
+                        if (response.status === "success") {
+                            alert("Success: " + response.data.message);
+                        } else {
+                            alert("Error: " + response.data.title + " - " + response.data.message);
+                        }
+                    }
+                }
+                xhttp.open("POST", "http://127.0.0.1/API_Demo/saveStudent/index.php", true);
+                xhttp.setRequestHeader("Content-Type", "application/json");
+                xhttp.send(JSON.stringify({
+                    "idNumber": idnumber,
+                    "lastName": lastname,
+                    "firstName": firstname,
+                    "middleName": middlename,
+                    "contactNumber": contactnumber,
+                    "email": email
+                }));
+            }
+        }
+    </script>
+</body>
+</html>

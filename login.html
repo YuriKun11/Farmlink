@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmLink Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fortawesome/fontawesome-free/js/all.min.js" defer></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <!-- Logo -->
+    <div class="flex items-center justify-center mb-4">
+      <span class="text-2xl font-bold text-green-700">FarmLink</span>
+    </div>
+
+    <!-- Heading -->
+    <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">Account Login</h2>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <!-- Email -->
+      <div class="mb-4 relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          placeholder="example: login@gmail.com"
+        />
+        <label for="email" class="absolute text-gray-500 text-sm top-0 left-10 -translate-y-1/2 bg-white px-1">
+          Email
+        </label>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-6 relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+          <i class="fas fa-lock"></i>
+        </div>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          placeholder="********"
+        />
+        <label for="password" class="absolute text-gray-500 text-sm top-0 left-10 -translate-y-1/2 bg-white px-1">
+          Password
+        </label>
+        <button
+          type="button"
+          onclick="togglePassword()"
+          class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 focus:outline-none"
+        >
+          <i id="toggleIcon" class="fas fa-eye"></i>
+        </button>
+      </div>
+
+      <!-- Remember Me & Forgot Password -->
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center">
+          <input type="checkbox" id="rememberMe" name="rememberMe" class="mr-2 h-4 w-4 text-green-600 border-gray-300 rounded" />
+          <label for="rememberMe" class="text-gray-700 text-sm">Remember me</label>
+        </div>
+        <a href="/forgot-password" class="text-green-600 text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-green-500">
+          Forgot Password?
+        </a>
+      </div>
+
+      <!-- Login Button -->
+      <button
+        type="submit"
+        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md w-full focus:outline-none focus:shadow-outline"
+      >
+        Login
+      </button>
+    </form>
+
+    <!-- Register Link -->
+    <p class="mt-4 text-center text-gray-600 text-sm">
+      Don't have an account?
+      <a href="signup.html" class="text-green-600 hover:underline">Register</a>
+    </p>
+  </div>
+
+  
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const icon = document.getElementById('toggleIcon');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+  </script>
+
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      console.log("Form Data: ", { email, password }); 
+
+      const data = { email: email, password: password };
+
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "http://127.0.0.1/API_Demo/backend/login.php", true);
+      xhttp.setRequestHeader("Content-Type", "application/json");
+
+      xhttp.send(JSON.stringify(data));
+      xhttp.onload = function () {
+          if (xhttp.status === 200) {
+              const response = JSON.parse(xhttp.responseText);
+              if (response.status === 'success') {
+                  console.log('Login successful, user role:', response.role);
+                  if (response.role === 'buyer') {
+                      window.location.href = 'buyer/farmlink.html'; 
+                  } else if (response.role === 'farmer') {
+                      window.location.href = 'farmer/viewproducts.html';
+                  } else {
+                      window.location.href = 'dashboard.html'; 
+                  }
+              } else {
+                  console.log('Login failed:', response.message);
+                  alert('Login failed: ' + response.message); 
+              }
+          } else {
+              console.error('Request failed with status:', xhttp.status);
+              alert('Login request failed.'); 
+          }
+      };
+      xhttp.onerror = function () {
+          console.error("There was a network error.");
+          alert("There was a network error.");
+      };
+  });
+</script>
+
+
+</body>
+</html>

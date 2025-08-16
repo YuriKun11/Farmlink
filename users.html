@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h2>Welcome, <span id="username">Loading...</span>!</h2>
+
+    <script>
+        window.onload = function () {
+            fetch('http://127.0.0.1/API_Demo/saveStudent/getUsers.php', {
+                credentials: 'include' // This is important to include cookies/sessions
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === "success" && data.data) {
+                    document.getElementById("username").textContent = data.data.username;
+                } else {
+                    document.getElementById("username").textContent = "Guest";
+                }
+            })
+            .catch(err => {
+                document.getElementById("username").textContent = "Error";
+                console.error("Fetch error:", err);
+            });
+        };
+    </script>
+    
+</body>
+</html>

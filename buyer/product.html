@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Toast Notification -->
+<div id="toast" class="fixed bottom-6 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-3 opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+  <i class="fas fa-check-circle"></i>
+  <span>Added to cart successfully!</span>
+</div>
+
+    
+<!-- Navbar -->
+<header class="bg-white shadow-md py-4 px-6 sm:px-10">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <span class="text-green-500 font-bold text-2xl sm:text-3xl">FarmLink</span>
+   
+
+    <!-- Right Side Buttons -->
+    <div class="flex items-center space-x-4">
+      <!-- Cart Icon -->
+       <a href="checkout.html">
+              <svg
+              class="h-6 w-6 text-gray-600 cursor-pointer"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              >
+              <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+              </svg>
+          </a>
+          <div class="relative">
+            <button class="flex items-center text-gray-700 hover:text-green-500 font-semibold focus:outline-none">
+                <svg class="h-6 w-6 text-gray-600 cursor-pointer" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                <span id="username">Loading...</span>
+            </button>
+        </div>
+    </div>
+  </div>
+</header>
+
+<!-- end of Navbar -->
+
+<div class="max-w-screen-xl mx-auto p-6">
+  <div class="bg-white rounded-lg shadow-md p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+          <div class="relative rounded-lg overflow-hidden mb-6">
+            <img id="product-image" src="../icons/vegetables/eggplant.png" alt="Eggplant" class="w-48 h-48 object-contain mx-auto">
+
+              </div>
+          <div>
+              <h2 class="text-2xl font-semibold text-gray-800 mb-2" id="title">Loading...</h2>
+              <p class="text-green-500 font-semibold text-lg mb-3" id="price">₱</p>
+              <p class="text-gray-600 text-sm mb-4" id="description">Loading...</p>
+              <div class="flex items-center space-x-4 mb-4">
+                  <div class="flex items-center text-sm text-gray-500">
+                      <i class="fas fa-star text-yellow-500 mr-1"></i>
+                      <span>4.8</span>
+                      <span class="ml-1">(256 Reviews)</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500">
+                      <div class="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-green-700 text-xs font-semibold mr-1">100%</div>
+                      <span>Organic</span>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-500">
+                      <div class="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-blue-700 text-xs font-semibold mr-1">5-7 Days</div>
+                      <span>Expiration</span>
+                  </div>
+              </div>
+             
+              <div class="flex space-x-4 mt-28">
+                <!-- Buy Now Button -->
+                  <button onclick="openBuyNowModal()" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-md w-1/2 focus:outline-none">
+                      Buy Now
+                  </button>
+                   <!-- Add to Cart Button -->
+                  <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-700 font-semibold py-3 px-6 rounded-md w-1/2 focus:outline-none">Add to cart</button>
+              </div>
+          </div>
+      </div>
+
+      <div>
+          <div class="bg-gray-100 rounded-lg p-6 mb-6">
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Delivery Options</h3>
+              <div class="flex items-center space-x-3 mb-3">
+                  <i class="fas fa-map-marker-alt text-green-500"></i>
+                  <div>
+                      <p class="text-sm text-gray-700">2500, San Fernando City,</p>
+                      <p class="text-sm text-gray-700">La Union</p>
+                  </div>
+                  <button class="text-green-500 text-sm font-semibold focus:outline-none">CHANGE</button>
+              </div>
+              </div>
+
+          <div class="bg-gray-100 rounded-lg p-6">
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Sold by</h3>
+              <div class="flex items-center justify-between mb-4">
+                  <span class="text-gray-700 font-semibold">Farmer John</span>
+                  <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none flex items-center">
+                      <i class="fa-regular fa-comment-dots mr-2"></i> Chat
+                  </button>
+              </div>
+              <div class="grid grid-cols-3 gap-4 text-center text-xs text-gray-600">
+                  <div>
+                      <span class="font-semibold text-gray-700 block text-sm">98%</span>
+                      <span>Seller Rating</span>
+                  </div>
+                  <div>
+                      <span class="font-semibold text-gray-700 block text-sm">98%</span>
+                      <span>Ship on Time Rate</span>
+                  </div>
+                  <div>
+                      <span class="font-semibold text-gray-700 block text-sm">100%</span>
+                      <span>Chat Response Rate</span>
+                  </div>
+              </div>
+              <button class="text-green-500 text-sm font-semibold mt-4 focus:outline-none">Go to Store</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div>
+  <a href="farmlink.html">
+      <div class="fixed bottom-4 left-4 bg-white rounded-full shadow-md w-10 h-10 flex items-center justify-center text-gray-700 hover:bg-gray-200 cursor-pointer">
+          <i class="fas fa-arrow-left"></i>
+      </div>
+  </a>
+</div>
+
+
+<!-- Buy Now Confirmation Modal -->
+<div id="buyNowModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 text-center">
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">Proceed to Purchase</h2>
+      <p class="text-gray-600">You’re buying <span class="font-medium text-green-600" id="modal-title-buy">Loading...</span>.</p>
+      <p class="text-gray-600 mb-4 mt-4">Price: <span class="font-medium text-green-600" id="modal-price-buy">Loading...</span></p>
+
+      <div class="flex justify-center items-center space-x-4 mb-6">
+          <span class="font-semibold text-gray-700">Quantity</span>
+          <div class="flex items-center border border-gray-300 rounded-md">
+              <button onclick="decrementBuyNowQuantity()" class="px-3 py-1 text-gray-600 hover:text-gray-800 focus:outline-none">-</button>
+              <input type="number" id="buyNowQuantity" value="1" class="w-12 text-center text-gray-700 focus:outline-none" min="1" onchange="updateBuyNowTotal()">
+              <button onclick="incrementBuyNowQuantity()" class="px-3 py-1 text-green-500 hover:text-green-600 focus:outline-none">+</button>
+          </div>
+      </div>
+
+      <p class="text-gray-700 mb-4">Total: <span class="font-semibold text-green-600" id="modal-total-buy">₱0.00</span></p>
+
+      <div class="flex justify-center space-x-4">
+          <button onclick="closeBuyNowModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md focus:outline-none">Cancel</button>
+          <button onclick="confirmPurchase()" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none">Yes, Proceed</button>
+      </div>
+  </div>
+</div>
+
+<!-- Add to Cart Confirmation Modal -->
+<div id="addToCartModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 text-center">
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">Add to Cart</h2>
+      <p class="text-gray-600">Add <span class="font-medium text-green-600" id="modal-title-cart">Loading...</span> to your cart?</p>
+      <p class="text-gray-600 mb-4 mt-4">Price: <span class="font-medium text-green-600" id="modal-price-cart">loading...</span></p>
+
+      <div class="flex justify-center items-center space-x-4 mb-6">
+          <span class="font-semibold text-gray-700">Quantity</span>
+          <div class="flex items-center border border-gray-300 rounded-md">
+              <button onclick="decrementQuantity()" class="px-3 py-1 text-gray-600 hover:text-gray-800 focus:outline-none">-</button>
+              <input type="number" id="quantity" value="1" class="w-12 text-center text-gray-700 focus:outline-none" min="1" onchange="updateTotal()">
+              <button onclick="incrementQuantity()" class="px-3 py-1 text-green-500 hover:text-green-600 focus:outline-none">+</button>
+          </div>
+      </div>
+
+      <p class="text-gray-700 mb-4">Total: <span class="font-semibold text-green-600" id="modal-total-cart">₱0.00</span></p>
+
+      <div class="flex justify-center space-x-4">
+          <button onclick="closeModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md focus:outline-none">Cancel</button>
+          <button onclick="confirmAddToCart()" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none">Yes</button>
+      </div>
+  </div>
+</div>
+
+
+
+<script>
+    window.onload = function() {
+        fetch('../backend/get_user.php')
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === "success") {
+                    // Store the user_id instead of the username
+                    const userId = data.user_id;
+                    document.getElementById("username").innerText = `User ID: ${userId}`;
+                } else {
+                    document.getElementById("username").innerText = "Guest";
+                }
+            });
+    };
+
+</script>
+<script>
+  let currentProductPrice = 0;
+
+  function fetchProductDetails(id) {
+      fetch(`http://127.0.0.1/API_Demo/backend/view_product.php?id=${id}`)
+          .then(response => response.json())
+          .then(data => {
+              if (data.status === 'success') {
+                  if (data.product.image_url) {
+                      let imagePath = data.product.image_url.replace('uploads/uploads', 'uploads');
+                      const img = document.querySelector('img');
+                      img.src = `../backend/${imagePath}`;
+                      img.alt = data.product.title;
+                  }
+                  const title = data.product.title;
+                  const description = data.product.description;
+                  const price = parseFloat(data.product.price);
+                  currentProductPrice = price;
+                  const formattedPrice = `₱${price.toFixed(2)}`;
+
+                  document.getElementById('title').textContent = title;
+                  document.getElementById('description').textContent = description;
+                  document.getElementById('price').textContent = formattedPrice;
+
+                  document.getElementById('modal-title-buy').textContent = title;
+                  document.getElementById('modal-price-buy').textContent = formattedPrice;
+
+                  document.getElementById('modal-title-cart').textContent = title;
+                  document.getElementById('modal-price-cart').textContent = formattedPrice;
+                  
+                  updateBuyNowTotal();
+
+              } else {
+                  alert('Failed to fetch product details.');
+              }
+          })
+          .catch(error => console.error('Error fetching product details:', error));
+  }
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get('id');
+
+  if (productId) {
+      fetchProductDetails(productId);
+  }
+
+  //Add to Cart Modal
+  function openModal() {
+      document.getElementById("addToCartModal").classList.remove("hidden");
+  }
+
+  //Buy Now Modal
+  function openBuyNowModal() {
+      document.getElementById("buyNowModal").classList.remove("hidden");
+  }
+
+  // CLOSE MODAL
+  function closeModal() {
+      document.getElementById("addToCartModal").classList.add("hidden");
+  }
+  function closeBuyNowModal() {
+      document.getElementById("buyNowModal").classList.add("hidden");
+  }
+
+  function incrementQuantity() {
+      const quantityInput = document.getElementById('quantity');
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+      updateTotal();
+  }
+
+  function decrementQuantity() {
+      const quantityInput = document.getElementById('quantity');
+      if (parseInt(quantityInput.value) > 1) {
+          quantityInput.value = parseInt(quantityInput.value) - 1;
+          updateTotal();
+      }
+  }
+
+  function updateTotal() {
+      const quantity = parseInt(document.getElementById('quantity').value);
+      const total = currentProductPrice * quantity;
+      document.getElementById('modal-total-cart').textContent = `₱${total.toFixed(2)}`;
+  }
+
+  function incrementBuyNowQuantity() {
+      const quantityInput = document.getElementById('buyNowQuantity');
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+      updateBuyNowTotal();
+  }
+
+  function decrementBuyNowQuantity() {
+      const quantityInput = document.getElementById('buyNowQuantity');
+      if (parseInt(quantityInput.value) > 1) {
+          quantityInput.value = parseInt(quantityInput.value) - 1;
+          updateBuyNowTotal();
+      }
+  }
+
+  function updateBuyNowTotal() {
+      const quantity = parseInt(document.getElementById('buyNowQuantity').value);
+      const total = currentProductPrice * quantity;
+      document.getElementById('modal-total-buy').textContent = `₱${total.toFixed(2)}`;
+  }
+
+  function confirmAddToCart() {
+    closeModal();
+    showToast();
+
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const total = currentProductPrice * quantity;
+
+    fetch('../backend/add_to_cart.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            product_id: productId,
+            quantity: quantity,
+            total_price: total
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            console.log('Product added to cart');
+        } else {
+            console.error('Failed to add to cart:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error adding to cart:', error);
+    });
+}
+  function confirmPurchase() {
+    closeBuyNowModal();
+    showToast("Proceeding to checkout...");
+
+    const quantity = parseInt(document.getElementById('buyNowQuantity').value);
+    const title = document.getElementById('title').textContent;
+    const price = currentProductPrice;
+    const imageSrc = document.getElementById('product-image').src;
+  
+    const userId = parseInt(document.getElementById('username').innerText.replace("User ID: ", ""));
+    
+    const productDetails = {
+        id: productId,
+        title: title,
+        price: price,
+        quantity: quantity,
+        image: imageSrc,
+        total: price * quantity,
+        user_id: userId 
+    };
+
+    localStorage.setItem('orderDetails', JSON.stringify(productDetails));
+
+    window.location.href = "order.html";
+}
+
+  function showToast(message = "Added to cart successfully!") {
+      const toast = document.getElementById("toast");
+      toast.querySelector("span").textContent = message;
+      toast.classList.remove("opacity-0", "pointer-events-none");
+      toast.classList.add("opacity-100");
+
+      setTimeout(() => {
+          toast.classList.remove("opacity-100");
+          toast.classList.add("opacity-0", "pointer-events-none");
+      }, 3000);
+  }
+  document.querySelector("button.bg-yellow-400").addEventListener("click", openModal);
+  document.querySelector("button.bg-green-500").addEventListener("click", openBuyNowModal);
+</script>
+
+<script>
+    window.onload = function() {
+        fetch('../backend/get_user.php')
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === "success") {
+                    document.getElementById("username").innerText =
+                        `${data.username || data.email}`;
+                } else {
+                    document.getElementById("username").innerText =
+                        "Guest";
+                }
+            });
+    };
+  </script>
+
+</body>
+</html>

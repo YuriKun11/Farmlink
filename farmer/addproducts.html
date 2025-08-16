@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <header class="bg-white shadow-md py-4 px-6 sm:px-10 sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+            <a href="./viewproducts.html" class="text-green-500 font-bold text-2xl sm:text-3xl">FarmLink</a>
+
+            <div class="flex items-center space-x-4">
+                <a href="/notifications" class="relative">
+                    <svg class="h-6 w-6 text-gray-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-6-6C6.91 5 5 6.91 5 11v3.158a2.032 2.032 0 01-1.405 1.405L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                </a>
+
+                <div class="relative">
+                    <button class="flex items-center text-gray-700 hover:text-green-500 font-semibold focus:outline-none">
+                        <svg class="h-6 w-6 text-gray-600 cursor-pointer" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                        </svg>
+                        <span id="username">Loading...</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white shadow-md rounded-lg p-6">
+               <!-- Back Button -->
+               <button onclick="navigateBack()" class="text-black font-semibold p-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500">
+                <i class="fa fa-arrow-left"></i>
+            </button>
+            
+            <div class="mb-4 flex items-center justify-between">
+                    <h2 class="font-semibold">Add Product</h2>
+                <div class="space-x-2">
+                    <button onclick="navigateToViewProducts()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        Discard
+                    </button>
+                    <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+                        Save
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <div>
+                        <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                        <input type="text" id="title" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter product name">
+                    </div>
+                    <div class="mb-4">
+                        <label for="description" class="block text-gray-700 text-sm font-bold mb-2 mt-2">Description</label>
+                        <textarea id="description" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Media</label>
+                        <div class="border border-gray-300 rounded-md p-4">
+                            
+                    
+                            <!-- File Upload Input (only shown if 'Upload File' is selected) -->
+                            <div id="file-upload" class="media-input">
+                                <div id="drop-zone" class="border-dashed border-2 border-gray-400 rounded-md p-6 text-center cursor-pointer">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <button class="text-green-500 font-semibold mt-2 focus:outline-none">Add files</button>
+                                    <p class="text-gray-400 text-xs mt-1">Accepts images only</p>
+                                    <input type="file" id="file-input" class="hidden mt-2" />
+                                </div>
+                            </div>
+
+                            
+                    
+                            <!-- URL Input (only shown if 'Enter URL' is selected) -->
+                            <div id="url-input" class="media-input hidden">
+                                <label for="media_url" class="block text-gray-700 text-sm font-bold mb-2">Enter URL</label>
+                                <input type="url" id="media_url" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter media URL (image/video)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Product Status</label>
+                        <div class="relative">
+                            <select id="status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option>Active</option>
+                                <option>Draft</option>
+                                <option>Inactive</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Product Category</label>
+                        <div class="relative">
+                            <select id="category" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option>Fruit</option>
+                                <option>Vegetable</option>
+                                <option>Other</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="unit" class="block text-gray-700 text-sm font-bold mb-2">Product Unit</label>
+                        <div class="relative">
+                            <select id="unit" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option>Piece</option>
+                                <option>kg</option>
+                                <option>Bunch</option>
+                                <option>Head</option>
+                                <option>Other</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Product Price</label>
+                        <input type="number" id="price" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter product price">
+                    </div>
+                    <div>
+                        <label for="quantity" class="block text-gray-700 text-sm font-bold mb-2">Product Quantity</label>
+                        <div class="relative">
+                            <input type="number" id="quantity" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="01">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+const dropZone = document.getElementById("drop-zone");
+const fileInput = document.getElementById("file-input");
+let selectedFile;
+
+dropZone.addEventListener("dragover", function (e) {
+    e.preventDefault();
+    dropZone.classList.add("bg-gray-100");
+});
+
+dropZone.addEventListener("dragleave", function () {
+    dropZone.classList.remove("bg-gray-100");
+});
+
+dropZone.addEventListener("drop", function (e) {
+    e.preventDefault();
+    dropZone.classList.remove("bg-gray-100");
+
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+        handleFiles(files);
+    }
+});
+
+dropZone.addEventListener("click", function () {
+    fileInput.click();
+});
+
+fileInput.addEventListener("change", function () {
+    const files = fileInput.files;
+    if (files.length > 0) {
+        handleFiles(files);
+    }
+});
+
+function handleFiles(files) {
+    const file = files[0];
+    selectedFile = file;
+
+    if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const imgElement = document.createElement("img");
+            imgElement.src = e.target.result;
+            imgElement.classList.add("w-32", "h-32", "object-cover", "mt-4", "rounded-md");
+
+            dropZone.innerHTML = "";
+            dropZone.appendChild(imgElement);
+        };
+
+        reader.readAsDataURL(file);
+    } else {
+        alert("Please upload a valid image file.");
+    }
+}
+
+document.querySelector(".bg-green-500").addEventListener("click", function () {
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+    formData.append("title", document.getElementById("title").value);
+    formData.append("description", document.getElementById("description").value);
+    formData.append("status", document.getElementById("status").value);
+    formData.append("category", document.getElementById("category").value);
+    formData.append("unit", document.getElementById("unit").value);
+    formData.append("price", parseFloat(document.getElementById("price").value));
+    formData.append("quantity", parseInt(document.getElementById("quantity").value));
+
+    fetch("http://127.0.0.1/API_Demo/backend/save_products.php", {
+        method: "POST",
+        body: formData 
+    })
+    .then(res => res.json())
+    .then(response => {
+        if (response.status === "success") {
+            alert(response.message);
+            document.getElementById("title").value = '';
+            document.getElementById("description").value = '';
+            document.getElementById("status").selectedIndex = 0; 
+            document.getElementById("category").selectedIndex = 0; 
+            document.getElementById("unit").selectedIndex = 0; 
+            document.getElementById("price").value = '';
+            document.getElementById("quantity").value = '1';
+           
+            dropZone.innerHTML = `
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <button class="text-green-500 font-semibold mt-2 focus:outline-none">Add files</button>
+                <p class="text-gray-400 text-xs mt-1">Accepts images only</p>
+            `;
+            selectedFile = null; 
+        } else {
+            alert("Error: " + response.message);
+        }
+    });
+});
+
+window.onload = function() {
+    fetch('../backend/get_user.php')
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                document.getElementById("username").innerText =
+                    `${data.username || data.email}`;
+            } else {
+                document.getElementById("username").innerText =
+                    "Guest";
+            }
+        });
+};
+
+function navigateBack() {
+    window.location.href="viewproducts.html";
+}
+
+
+</script>
+<script src="../js/Navigate.js"></script>
+</script>
+<script src="../js/Navigate.js"></script>
+</body>
+</html>

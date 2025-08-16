@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Placed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8 bg-white rounded-lg shadow-md p-8">
+            <div>
+                <div class="flex items-center justify-center h-24 w-24 mx-auto rounded-full bg-green-100">
+                    <svg class="h-16 w-16 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    Order Placed!
+                </h2>
+                <p class="mt-2 text-center text-gray-600">
+                    Thank you for your order.
+                </p>
+                <p class="mt-4 text-center text-gray-500 text-sm">
+                    Your order has been successfully placed and is being processed.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label for="order-number" class="block text-sm font-medium text-gray-700">
+                        Order Number
+                    </label>
+                    <div class="mt-1">
+                        <input type="text" id="order-number" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md" value="FMLK-2025-1604-001" readonly>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">
+                        Email Address
+                    </label>
+                    <div class="mt-1">
+                        <input type="email" id="email" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md" value="your.email@example.com" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <p class="text-center text-gray-500 text-sm">
+                    You will receive an email confirmation shortly with your order details and tracking information.
+                </p>
+            </div>
+
+            <div class="mt-8">
+                <a href="farmlink.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    Continue Shopping
+                    <svg class="-mr-1 ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         fetch('../backend/get_user.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('email').value = data.email;
+                } else {
+                    document.getElementById('email').value = 'Not logged in';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+                document.getElementById('email').value = 'Error loading email';
+            });
+    </script>
+</body>
+</html>
